@@ -16,12 +16,12 @@ module.exports.config = {
 
 module.exports.run = async function({ event, api }) {
  fs.readdir(folderPath, (err, files) => {
- if (err) return api.sendMessage('❌ ফোল্ডার পড়তে সমস্যা হচ্ছে!', event.threadID);
+ if (err) return api.sendMessage('ফোল্ডার পড়তে সমস্যা হচ্ছে!', event.threadID);
 
  const jsFiles = files.filter(file => path.extname(file).toLowerCase() === '.js');
- if (!jsFiles.length) return api.sendMessage("❌ কোনো .js ফাইল পাওয়া যায়নি!", event.threadID);
+ if (!jsFiles.length) return api.sendMessage(" কোনো .js ফাইল পাওয়া যায়নি!", event.threadID);
 
- let msg = '╭•┄┅═════❁🌺❁═════┅┄•╮\n🌸 𝑺𝑼𝑱𝑶𝑵 𝑩𝑶𝑺𝑺 এর ফাইল লিস্ট 🌸\n╰•┄┅═════❁🌺❁═════┅┄•╯';
+ let msg = '‎   ╭──────✨🎀✨──────╮\n   ✨ 𝐇 𝐈 𝐍 𝐀 𝐓 𝐀 ✨\n ╰──────✨🎀✨──────╯';
  jsFiles.forEach((file, index) => {
  msg += `\n${index + 1}. ${file}`;
  });
@@ -40,14 +40,14 @@ module.exports.run = async function({ event, api }) {
 
 module.exports.handleReply = async function({ event, api, handleReply }) {
  const { author, files } = handleReply;
- if (event.senderID !== author) return api.sendMessage('⚠️ আপনি এই কমান্ড ব্যবহার করতে পারবেন না!', event.threadID);
+ if (event.senderID !== author) return api.sendMessage('আপনি এই কমান্ড ব্যবহার করতে পারবেন না!', event.threadID);
 
  const input = event.body.trim().split(/\s+/);
  const index = parseInt(input[0]);
  const action = input[1]?.toLowerCase();
 
  if (!index || !action || !files[index - 1]) {
- return api.sendMessage('❌ সঠিকভাবে লিখুন: [নম্বর] raw/del', event.threadID, event.messageID);
+ return api.sendMessage('সঠিকভাবে লিখুন: [নম্বর] raw/del', event.threadID, event.messageID);
  }
 
  const selectedFile = files[index - 1];
@@ -58,14 +58,14 @@ module.exports.handleReply = async function({ event, api, handleReply }) {
  fs.unlinkSync(filePath);
  return api.sendMessage(`🗑️ ডিলিট সফল!\n➤ ${selectedFile}`, event.threadID);
  } catch (err) {
- return api.sendMessage(`❌ ডিলিট করতে সমস্যা:\n${err.message}`, event.threadID);
+ return api.sendMessage(` ডিলিট করতে সমস্যা:\n${err.message}`, event.threadID);
  }
  }
 
  if (action === "raw") {
  try {
  const content = fs.readFileSync(filePath, "utf8");
- const loading = await api.sendMessage("📤 PasteBin-এ লিংক তৈরি হচ্ছে...", event.threadID);
+ const loading = await api.sendMessage("⟡───────⟡───────⟡\njust a second......\n⟡───────⟡───────⟡", event.threadID);
 
  const res = await axios.post("https://pastebin-api.vercel.app/paste", { text: content });
  if (!res.data || !res.data.id) throw new Error("PasteBin API থেকে ID পাওয়া যায়নি!");
@@ -73,7 +73,7 @@ module.exports.handleReply = async function({ event, api, handleReply }) {
  const pasteUrl = `https://pastebin-api.vercel.app/raw/${res.data.id}`;
  await api.unsendMessage(loading.messageID);
 
- return api.sendMessage(`✅ র‍্য লিংক তৈরি হয়েছে!\n🔗 লিংক: ${pasteUrl}`, event.threadID);
+ return api.sendMessage(` 🐤লিংক তৈরি হয়েছে!\n🔗 লিংক: ${pasteUrl}`, event.threadID);
  } catch (err) {
  return api.sendMessage(`❌ আপলোড করতে সমস্যা:\n${err.message}`, event.threadID, event.messageID);
  }
