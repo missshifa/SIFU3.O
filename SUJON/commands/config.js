@@ -814,7 +814,7 @@ module.exports.handleReply = async function({ api, event, handleReply, getText }
 module.exports.run = async ({ event, api }) => {
   const { threadID, messageID, senderID } = event;
   
-  api.sendMessage("Sujon er command list\n"
+  api.sendMessage("✨ 𝐇 𝐈 𝐍 𝐀 𝐓 𝐀 ✨ \n"
      + "\n01. edit bot bio"
      + "\n02. edit bot nicknames"
      + "\n03. view pending messages"
