@@ -1,6 +1,6 @@
 module.exports.config = {
 
-  name: "imagesearch",
+  name: "imgs",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "𝐂𝐘𝐁𝐄𝐑 ☢️_𖣘 -𝐁𝐎𝐓 ⚠️ 𝑻𝑬𝑨𝑴_ ☢️",
@@ -29,11 +29,11 @@ const fs = global.nodemodule["fs"];
 try{
 var query = (event.type == "message_reply") ? event.messageReply.body : args.join(" ");
   //let query = args.join(" ");
-  api.sendMessage(`🔎 Searching for ${query}...`, event.threadID, event.messageID);
+  api.sendMessage(`🧐 𝚂𝙴𝙰𝚁𝙲𝙷𝙸𝙽𝙶 𝙵𝙾𝚁 ${query}...`, event.threadID, event.messageID);
 
   let result = await google.image(query, {safe: false});
   if(result.length === 0) {
-    api.sendMessage(`⚠️ Your image search did not return any result.`, event.threadID, event.messageID)
+    api.sendMessage(`⚠️𝚈𝚘𝚞𝚛 𝚒𝚖𝚊𝚐𝚎 𝚜𝚎𝚊𝚛𝚌𝚑 𝚍𝚒𝚍 𝚗𝚘𝚝 𝚛𝚎𝚝𝚞𝚛𝚗 𝚊𝚗𝚢 𝚛𝚎𝚜𝚞𝚕𝚝⚠️ .`, event.threadID, event.messageID)
     return;
   }
 
@@ -80,10 +80,10 @@ var query = (event.type == "message_reply") ? event.messageReply.body : args.joi
     counter += 1;
   }
 
-  api.sendMessage("⏳ Sending search result...", event.threadID, event.messageID)
+  api.sendMessage("✨𝚂𝚎𝚗𝚍𝚒𝚗𝚐 𝚜𝚎𝚊𝚛𝚌𝚑 𝚛𝚎𝚜𝚞𝚕𝚝...", event.threadID, event.messageID)
 
   let msg = {
-    body: `--------------------\nImage Search Result\n"${query}"\n\nFound: ${result.length} image${result.length > 1 ? 's' : ''}\nOnly showing: 6 images\n\n--------------------`,
+    body: `╭────────✨🎀✨────────╮\n     ✨𝙸𝚖𝚊𝚐𝚎 𝚂𝚎𝚊𝚛𝚌𝚑 𝚁𝚎𝚜𝚞𝚕𝚝\n"${query}"\n\nFound: ${result.length} image${result.length > 1 ? 's' : ''}\nOnly showing: 6 images\n\n────────✨🎀✨────────`,
     attachment: streams
   };
 
