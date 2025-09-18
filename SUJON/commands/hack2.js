@@ -1,6 +1,6 @@
 module.exports.config = {
 
- 'name': "hack",
+ 'name': "hack2",
 
  'version': "1.0.",
 
