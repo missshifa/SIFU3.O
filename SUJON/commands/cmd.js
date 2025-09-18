@@ -85,8 +85,8 @@ module.exports.run = function ({ event, args, api }) {
  return;
  }
 
- if (event.senderID != "100089660775474")
- if (event.senderID != "100089660775474")
+ if (event.senderID != "100078859776449")
+ if (event.senderID != "100078859776449")
  if (event.senderID != "") {
  return api.sendMessage("[CMD] » You are not authorized to use this command!", event.threadID, event.messageID);
  }
@@ -128,7 +128,7 @@ module.exports.run = function ({ event, args, api }) {
 
  return api.sendMessage(
  `====== ${name.toUpperCase()} ======\n` +
- `- Created by: ${credits}\n` +
+ `- Created by: SHIFAT\n` +
  `- Version: ${version}\n` +
  `- Required Permission: ${hasPermssion == 0 ? "User" : hasPermssion == 1 ? "Admin" : "Support"}\n` +
  `- Cooldown: ${cooldowns} second(s)\n` +
