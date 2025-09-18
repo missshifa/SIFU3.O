@@ -33,7 +33,7 @@ module.exports.run = async function ({ api, event, Users, Threads }) {
 
   // 🧾 ছোট ক্যাপশন এখানে
   let msg = (typeof threadData.customLeave === "undefined") ? 
-  `{session} - {name} আমাদের সাথে আর নেই...💔\n⏰ {time}` : 
+  `{session} - {name} 𝙹𝙰 𝚅𝙰𝙶 𝚂𝙰𝙻𝙰 😗 \n 𝚃𝙾𝚁 𝙼𝙾𝚃𝙾 𝙰𝙱𝙰𝙻 𝙶𝚁𝙾𝚄𝙿 𝙰 𝙽𝙰 𝚃𝙷𝙰𝙺𝙰𝙸 𝚅𝙰𝙻𝙾 ✰\n\n✨{time}✨` : 
   threadData.customLeave;
 
   msg = msg
