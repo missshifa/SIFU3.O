@@ -2,7 +2,7 @@ const axios = require('axios');
 const dipto = "https://www.noobs-api.rf.gd/dipto";
 
 module.exports.config = {
- name: "refine",
+ name: "edt",
  version: "6.9",
  credits: "dipto",
  countDown: 5,
@@ -20,7 +20,7 @@ async function handleEdit(api, event, args, commandName) {
  const prompt = args.join(" ") || "What is this";
 
  if (!url) {
- return api.sendMessage("❌ Please reply to an image to edit it.", event.threadID, event.messageID);
+ return api.sendMessage(" 𝙿𝚕𝚎𝚊𝚜𝚎 𝚛𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊𝚗 𝚒𝚖𝚊𝚐𝚎 𝚝𝚘 𝚎𝚍𝚒𝚝 𝚒𝚝.", event.threadID, event.messageID);
  }
 
  try {
@@ -72,14 +72,14 @@ async function handleEdit(api, event, args, commandName) {
  }
 
  return api.sendMessage(
- "❌ No valid response from the API",
+ "No valid response",
  event.threadID,
  event.messageID);
 
  } catch (error) {
  console.error("Edit command error:", error);
  return api.sendMessage(
- "❌ Failed to process your request. Please try again later.",
+ "𝙵𝚊𝚒𝚕𝚎𝚍 𝚝𝚘 𝚙𝚛𝚘𝚌𝚎𝚜𝚜 𝚢𝚘𝚞𝚛 𝚛𝚎𝚚𝚞𝚎𝚜𝚝.",
  event.threadID,
  event.messageID
  );
@@ -89,7 +89,7 @@ async function handleEdit(api, event, args, commandName) {
 module.exports.run = async ({ api, event, args }) => {
  if (!event.messageReply) {
  return api.sendMessage(
- "❌ Please reply to an image to edit it.",
+ "𝙿𝚕𝚎𝚊𝚜𝚎 𝚛𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊𝚗 𝚒𝚖𝚊𝚐𝚎 𝚝𝚘 𝚎𝚍𝚒𝚝 𝚒𝚝.",
  event.threadID,
  event.messageID);
  }
