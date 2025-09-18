@@ -24,6 +24,6 @@ module.exports.run = function({
   return request(`http://api.open-notify.org/iss-now.json`, (err, response, body) => {
     if (err) throw err;
     var jsonData = JSON.parse(body);
-    api.sendMessage(`Current location of International Space Station 🌌🌠🌃 \n-latitude: ${jsonData.iss_position.latitude}\n- Longitude: ${jsonData.iss_position.longitude}`, event.threadID, event.messageID);
+    api.sendMessage(` ✨𝙲𝚞𝚛𝚛𝚎𝚗𝚝 𝚕𝚘𝚌𝚊𝚝𝚒𝚘𝚗 𝚘𝚏 𝙸𝚗𝚝𝚎𝚛𝚗𝚊𝚝𝚒𝚘𝚗𝚊𝚕 𝚂𝚙𝚊𝚌𝚎 𝚂𝚝𝚊𝚝𝚒𝚘𝚗🌌🌠🌃 \n-latitude: ${jsonData.iss_position.latitude}\n- Longitude: ${jsonData.iss_position.longitude}`, event.threadID, event.messageID);
   });
 }
