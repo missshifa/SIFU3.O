@@ -13,8 +13,8 @@ module.exports.config = {
 };
 
 module.exports.run = async ({ api, event }) => {
-	if (event.type !== "message_reply") return api.sendMessage("❌ You have to reply to a photo", event.threadID, event.messageID);
-	if (!event.messageReply.attachments || event.messageReply.attachments.length == 0) return api.sendMessage("❌ You have to reply to a photo", event.threadID, event.messageID);
+	if (event.type !== "message_reply") return api.sendMessage("🐤 𝚈𝚘𝚞 𝚑𝚊𝚟𝚎 𝚝𝚘 𝚛𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊 𝚙𝚑𝚘𝚝𝚘.", event.threadID, event.messageID);
+	if (!event.messageReply.attachments || event.messageReply.attachments.length == 0) return api.sendMessage("𝚈𝚘𝚞 𝚑𝚊𝚟𝚎 𝚝𝚘 𝚛𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊 𝚙𝚑𝚘𝚝𝚘", event.threadID, event.messageID);
 	if (event.messageReply.attachments.length > 1) return api.sendMessage(`Please reply only 1 photo!`, event.threadID, event.messageID);
 	var abc = event.messageReply.attachments[0].url
 	let pathImg = __dirname + '/cache/loz.png';
