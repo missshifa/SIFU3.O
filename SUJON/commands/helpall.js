@@ -1,149 +1,101 @@
+const fs = require("fs");
+
+// --- Font Conversion Functions ---
+
+// Maps for 𝗔𝗕𝗖𝗗 font style (Bold Sans-Serif)
+const boldSansMap = {
+    'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚',
+    'H': '𝗛', 'I': '𝗜', 'J': '𝗝', 'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡',
+    'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧', 'U': '𝗨',
+    'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭'
+};
+
+// Maps for 𝙰𝙱𝙲𝙳 font style (Monospace)
+const monospaceMap = {
+    'a': '𝚊', 'b': '𝚋', 'c': '𝚌', 'd': '𝚍', 'e': '𝚎', 'f': '𝚏', 'g': '𝚐',
+    'h': '𝚑', 'i': '𝚒', 'j': '𝚓', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗',
+    'o': '𝚘', 'p': '𝚙', 'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝚝', 'u': '𝚞',
+    'v': '𝚟', 'w': '𝚠', 'x': '𝚡', 'y': '𝚢', 'z': '𝚣',
+    'A': '𝙰', 'B': '𝙱', 'C': '𝙲', 'D': '𝙳', 'E': '𝙴', 'F': '𝙵', 'G': '𝙶',
+    'H': '𝙷', 'I': '𝙸', 'J': '𝙹', 'K': '𝙺', 'L': '𝙻', 'M': '𝙼', 'N': '𝙽',
+    'O': '𝙾', 'P': '𝙿', 'Q': '𝚀', 'R': '𝚁', 'S': '𝚂', 'T': '𝚃', 'U': '𝚄',
+    'V': '𝚅', 'W': '𝚆', 'X': '𝚇', 'Y': '𝚈', 'Z': '𝚉'
+};
+
+/**
+ * Applies a specific font style to a string.
+ * @param {string} text The text to convert.
+ * @param {object} map The character map for the font.
+ * @returns {string} The converted text.
+ */
+function applyFont(text, map) {
+    return text.split('').map(char => map[char] || char).join('');
+}
+
+
+// --- Command Configuration ---
+
 module.exports.config = {
-  'name': "helpall",
-  'version': "1.0.2",
-  'hasPermssion': 0x0,
-  'credits': "MAHBUB SHAON",
-  'description': "FREE SET-UP MESSENGER",
-  'commandCategory': "system",
-  'usages': "[Name module]",
-  'cooldowns': 0x5,
-  'envConfig': {
-    'autoUnsend': true,
-    'delayUnsend': 0x14
-  }
+  name: "help",
+  version: "4.0.4", // Incremented version
+  hasPermssion: 0,
+  credits: "𝗦𝗛𝗜𝗙𝗔𝗧 ", // Don't changes my credit 🥺
+  description: "Dynamic Advanced Command List with custom fonts.",
+  commandCategory: "system",
+  usages: "help",
+  cooldowns: 5,
 };
-module.exports.languages = {
-  'en': {
-    'moduleInfo': "╭──────•◈•──────╮\n | 𝗜𝘀𝗹𝗮𝗺𝗶𝗰𝗸 𝗰𝗵𝗮𝘁 𝗯𝗼𝘁\n |●𝗡𝗮𝗺𝗲: •—» %1 «—•\n |●𝗨𝘀𝗮𝗴𝗲: %3\n |●𝗗𝗲𝘀𝗰𝗿𝗶p𝘁𝗶𝗼𝗻: %2\n |●𝗖𝗮𝘁𝗲𝗴𝗼𝗿𝘆: %4\n |●𝗪𝗮𝗶𝘁𝗶𝗻𝗴 𝘁𝗶𝗺𝗲: %5 seconds(s)\n |●𝗣𝗲𝗿𝗺𝗶𝘀𝘀𝗶𝗼𝗻: %6\n |𝗠𝗼𝗱𝘂𝗹𝗲 𝗰𝗼𝗱𝗲 𝗯𝘆\n |•—» Sujon «—•\n╰──────•◈•──────╯",
-    'helpList': "[ There are %1 commands on this bot, Use: \"%2help nameCommand\" to know how to use! ]",
-    'user': "User",
-    'adminGroup': "Admin group",
-    'adminBot': "Admin bot"
-  }
-};
-module.exports.handleEvent = function ({
-  api: _0x5b448d,
-  event: _0x1b0f3a,
-  getText: _0x9ea8dd
-}) {
-  const {
-    commands: _0x4a806c
-  } = global.client;
-  const {
-    threadID: _0x3aed60,
-    messageID: _0x2aefd8,
-    body: _0x26a366
-  } = _0x1b0f3a;
-  if (!_0x26a366 || typeof _0x26a366 == "undefined" || _0x26a366.indexOf("help") != 0) {
-    return;
-  }
-  const _0x30c8db = _0x26a366.slice(_0x26a366.indexOf("help")).trim().split(/\s+/);
-  if (_0x30c8db.length == 1 || !_0x4a806c.has(_0x30c8db[1].toLowerCase())) {
-    return;
-  }
-  const _0x30acf4 = global.data.threadData.get(parseInt(_0x3aed60)) || {};
-  const _0x536d59 = _0x4a806c.get(_0x30c8db[1].toLowerCase());
-  const _0x5962a7 = _0x30acf4.hasOwnProperty("PREFIX") ? _0x30acf4.PREFIX : global.config.PREFIX;
-  return _0x5b448d.sendMessage(_0x9ea8dd("moduleInfo", _0x536d59.config.name, _0x536d59.config.description, '' + _0x5962a7 + _0x536d59.config.name + " " + (_0x536d59.config.usages ? _0x536d59.config.usages : ''), _0x536d59.config.commandCategory, _0x536d59.config.cooldowns, _0x536d59.config.hasPermssion == 0 ? _0x9ea8dd("user") : _0x536d59.config.hasPermssion == 1 ? _0x9ea8dd("adminGroup") : _0x9ea8dd("adminBot"), _0x536d59.config.credits), _0x3aed60, _0x2aefd8);
-};
-module.exports.run = function ({
-  api: _0x64d666,
-  event: _0x1e7ccd,
-  args: _0x290434,
-  getText: _0x272a7d
-}) {
-  const _0x519cb9 = require("axios");
-  const _0x33b740 = require("request");
-  const _0x314439 = require("fs-extra");
-  const {
-    commands: _0x288db6
-  } = global.client;
-  const {
-    threadID: _0x12d8be,
-    messageID: _0x46b400
-  } = _0x1e7ccd;
-  const _0x5e13e8 = _0x288db6.get((_0x290434[0] || '').toLowerCase());
-  const _0x10c4c6 = global.data.threadData.get(parseInt(_0x12d8be)) || {};
-  const {
-    autoUnsend: _0x7b08b5,
-    delayUnsend: _0x3b4cc3
-  } = global.configModule[this.config.name];
-  const _0x4722cf = _0x10c4c6.hasOwnProperty("PREFIX") ? _0x10c4c6.PREFIX : global.config.PREFIX;
-  if (_0x290434[0] == "all") {
-    const _0x2f7eee = _0x288db6.values();
-    var _0x15c87e = [];
-    var _0xf49f2a = '';
-    for (const _0x4df3ea of _0x2f7eee) {
-      if (!_0x15c87e.some(_0x132891 => _0x132891.group.toLowerCase() == _0x4df3ea.config.commandCategory.toLowerCase())) {
-        _0x15c87e.push({
-          'group': _0x4df3ea.config.commandCategory.toLowerCase(),
-          'cmds': [_0x4df3ea.config.name]
-        });
-      } else {
-        _0x15c87e.find(_0x150ce7 => _0x150ce7.group.toLowerCase() == _0x4df3ea.config.commandCategory.toLowerCase()).cmds.push(_0x4df3ea.config.name);
+
+// --- Main Command Logic ---
+
+module.exports.run = async ({ api, event }) => {
+  try {
+    const commandFiles = fs.readdirSync(__dirname).filter(file => file.endsWith(".js"));
+    let commandCount = 0;
+    let categories = {};
+
+    for (const file of commandFiles) {
+      try {
+        const command = require(`${__dirname}/${file}`);
+        if (!command || !command.config || !command.config.name || command.config.name === this.config.name) {
+          continue;
+        }
+
+        const category = command.config.commandCategory
+          ? command.config.commandCategory.toUpperCase()
+          : "EXTRA";
+
+        if (!categories[category]) {
+          categories[category] = [];
+        }
+
+        // Apply monospace font to command names
+        const commandNameWithFont = applyFont(command.config.name, monospaceMap);
+        categories[category].push(`★${commandNameWithFont}`);
+        commandCount++;
+
+      } catch (e) {
+        console.error(`❌ Failed to load command from file: ${file}: ${e.message}`);
       }
     }
-    _0x15c87e.forEach(_0x163969 => _0xf49f2a += "❄️ " + (_0x163969.group.charAt(0).toUpperCase() + _0x163969.group.slice(1)) + " \n" + _0x163969.cmds.join(" • ") + "\n\n");
-    return _0x519cb9.get("https://loidsenpaihelpapi.miraiandgoat.repl.co").then(_0x375af8 => {
-      let _0x3d2f35 = _0x375af8.data.data.substring(_0x375af8.data.data.lastIndexOf('.') + 1);
-      _0x64d666.getUserInfo(parseInt("100089660775474"), (_0x27e2f5, _0x58fcde) => {
-        if (_0x27e2f5) {
-          return console.log(_0x27e2f5);
-        }
-        var _0x4f4a1b = Object.keys(_0x58fcde);
-        var _0xb863df = _0x58fcde[_0x4f4a1b].name.replace('@', '');
-        let _0x9ca67e = function () {
-          _0x64d666.sendMessage({
-            'body': "✿🄲🄾🄼🄼🄰🄽🄳 🄻🄸🅂🅃✿\n\n" + _0xf49f2a + ("✿══════════════✿\n│𝗨𝘀𝗲 " + _0x4722cf + "help [Name?]\n│𝗨𝘀𝗲 " + _0x4722cf + "help [Page?]\n│𝗡𝗔𝗠𝗘 𝗢𝗪𝗡𝗘𝗥 : Sujon\n│𝗧𝗢𝗧𝗔𝗟 : " + _0x288db6.size + "\n————————————"),
-            'mentions': [{
-              'tag': _0xb863df,
-              'id': "100089660775474",
-              'fromIndex': 0x0
-            }],
-            'attachment': _0x314439.createReadStream(__dirname + ("/cache/472." + _0x3d2f35))
-          }, _0x1e7ccd.threadID, (_0x436f26, _0x612d8b) => {
-            _0x314439.unlinkSync(__dirname + ("/cache/472." + _0x3d2f35));
-            if (_0x7b08b5 == false) {
-              setTimeout(() => {
-                return _0x64d666.unsendMessage(_0x612d8b.messageID);
-              }, _0x3b4cc3 * 1000);
-            } else {
-              return;
-            }
-          }, _0x1e7ccd.messageID);
-        };
-        _0x33b740(_0x375af8.data.data).pipe(_0x314439.createWriteStream(__dirname + ("/cache/472." + _0x3d2f35))).on("close", _0x9ca67e);
-      });
-    });
-  }
-  ;
-  if (!_0x5e13e8) {
-    const _0x45ae1c = [];
-    const _0x42ee77 = parseInt(_0x290434[0]) || 1;
-    let _0x40f233 = 0;
-    let _0x1d56bd = '';
-    for (var [_0x55a50f, _0x379946] of _0x288db6) {
-      _0x55a50f += '';
-      _0x45ae1c.push(_0x55a50f);
+
+    const sortedCategories = Object.keys(categories).sort();
+
+    let msg = "╰────────✨🎀✨────────╯\n         ✨ 𝐇𝐈𝐍𝐀𝐓𝐀 ✨ 𝐖𝐎𝐑𝐋𝐃 ✨ \n╭────────✨🎀✨────────╮ \n\n\n\n";
+
+    for (const cat of sortedCategories) {
+      // Apply bold sans-serif font to category names
+      const categoryNameWithFont = applyFont(cat, boldSansMap);
+      msg += `╭────✨${categoryNameWithFont}\n`;
+      msg += "│\n│" + categories[cat].join(" ") + "\n\n";
     }
-    _0x45ae1c.sort((_0x18e95c, _0x2dfc14) => _0x18e95c.data - _0x2dfc14.data);
-    const _0x53ea96 = 999 * _0x42ee77 - 999;
-    _0x40f233 = _0x53ea96;
-    const _0x415bb4 = _0x45ae1c.slice(_0x53ea96, _0x53ea96 + 999);
-    for (let _0xf67df2 of _0x415bb4) _0x1d56bd += "•—»[ " + _0xf67df2 + " ]«—•\n";
-    const _0x217452 = "╭──────•◈•──────╮\n│𝗨𝘀𝗲 " + _0x4722cf + "help [Name?]\n│𝗨𝘀𝗲 " + _0x4722cf + "help [Page?]\n│𝗡𝗔𝗠𝗘 𝗢𝗪𝗡𝗘𝗥 : Sujon\n│𝗧𝗢𝗧𝗔𝗟 : [" + _0x45ae1c.length + "]\n│📛🄿🄰🄶🄴📛 : [" + _0x42ee77 + '/' + Math.ceil(_0x45ae1c.length / 999) + "]\n╰──────•◈•──────╯";
-    var _0x316826 = ["https://i.imgur.com/qnN2h4P.jpeg, "];
-    var _0x23cd20 = () => _0x64d666.sendMessage({
-      'body': "╭──────•◈•──────╮\n | 𝗜𝘀𝗹𝗮𝗺𝗶𝗰𝗸 𝗰𝗵𝗮𝘁 𝗯𝗼𝘁 \n | 🄲🄾🄼🄼🄰🄽🄳 🄻🄸🅂🅃 \n╰──────•◈•──────╯\n\n" + _0x1d56bd + _0x217452,
-      'attachment': _0x314439.createReadStream(__dirname + "/cache/loidbutter.jpg")
-    }, _0x1e7ccd.threadID, () => _0x314439.unlinkSync(__dirname + "/cache/loidbutter.jpg"), _0x1e7ccd.messageID);
-    return _0x33b740(encodeURI(_0x316826[Math.floor(Math.random() * _0x316826.length)])).pipe(_0x314439.createWriteStream(__dirname + "/cache/loidbutter.jpg")).on("close", () => _0x23cd20());
+
+    msg += `╰───────────────⧕\n\n\n╭───『 ✨ 𝐇 𝐈 𝐍 𝐀 𝐓 𝐀 ✨ 』\n╰──‣ 𝚃𝙾𝚃𝙰𝙻 𝙲𝙼𝙳 : ✨${commandCount}✨\n‎╭────────✨🎀✨────────╮ \n╰──‣ 𝙱𝙾𝚃 : ✨𝐇𝐈𝐍𝐀𝐓𝐀✨\n‎╭──‣ 𝙰𝙳𝙼𝙸𝙽 : ✨𝐒𝐇𝐈𝐅𝐀𝐓✨\n╰────────✨🎀✨────────╯ `;
+
+    api.sendMessage(msg, event.threadID, event.messageID);
+
+  } catch (e) {
+    console.error("❌ A critical error occurred in the help command:", e);
+    api.sendMessage("❌ An unexpected error occurred while running the help command.", event.threadID, event.messageID);
   }
-  const _0x1569fc = _0x272a7d("moduleInfo", _0x5e13e8.config.name, _0x5e13e8.config.description, '' + (_0x5e13e8.config.usages ? _0x5e13e8.config.usages : ''), _0x5e13e8.config.commandCategory, _0x5e13e8.config.cooldowns, _0x5e13e8.config.hasPermssion == 0 ? _0x272a7d("user") : _0x5e13e8.config.hasPermssion == 1 ? _0x272a7d("adminGroup") : _0x272a7d("adminBot"), _0x5e13e8.config.credits);
-  var _0x316826 = ["https://i.imgur.com/qnN2h4P.jpeg"];
-  var _0x23cd20 = () => _0x64d666.sendMessage({
-    'body': _0x1569fc,
-    'attachment': _0x314439.createReadStream(__dirname + "/cache/loidbutter.jpg")
-  }, _0x1e7ccd.threadID, () => _0x314439.unlinkSync(__dirname + "/cache/loidbutter.jpg"), _0x1e7ccd.messageID);
-  return _0x33b740(encodeURI(_0x316826[Math.floor(Math.random() * _0x316826.length)])).pipe(_0x314439.createWriteStream(__dirname + "/cache/loidbutter.jpg")).on("close", () => _0x23cd20());
 };
