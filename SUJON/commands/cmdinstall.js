@@ -26,7 +26,7 @@ module.exports.run = async ({
       return _0xbee1d2.sendMessage("⚠️ দয়া করে একটি বৈধ ফাইল নাম এবং কোড বা লিংক দিন!", _0x27c6a5.threadID, _0x27c6a5.messageID);
     }
     if (_0x1e599e.includes('..') || path.isAbsolute(_0x1e599e)) {
-      return _0xbee1d2.sendMessage("❌ অবৈধ ফাইল নাম!", _0x27c6a5.threadID, _0x27c6a5.messageID);
+      return _0xbee1d2.sendMessage("❌অবৈধ ফাইল নাম!", _0x27c6a5.threadID, _0x27c6a5.messageID);
     }
     if (!_0x1e599e.endsWith(".js")) {
       return _0xbee1d2.sendMessage("⚠️ শুধুমাত্র .js ফাইল অনুমোদিত!", _0x27c6a5.threadID, _0x27c6a5.messageID);
