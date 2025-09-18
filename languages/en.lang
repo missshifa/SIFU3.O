@@ -24,11 +24,11 @@ Main.finishLoadModule=Installed %1 module commands and %2 module events successf
 Main.foundPathAppstate=Sujonstate successfully
 Main.notFoundPathAppstate=Error can't find appstate file maybe file is malformed!
 Main.checkListGban=Checking global ban list...
-Main.banDevice=Your device have been banned from SUJON, please contact to facebook m.me/100089660775474 to know more information or asking for unban key, if you already have unban key, please fill it below.
+Main.banDevice=Your device have been banned from —͟͟͞͞sʜɪғꫝ֟፝ؖ۬ᴛ ✿, please contact to facebook m.me/100078859776449 to know more information or asking for unban key, if you already have unban key, please fill it below.
 Main.keyNotSameFormat=Wrong format, code must contain 6 number.
 Main.codeInputExpired=Your code is wrong or out of date.
 Main.unbanDeviceSuccess=Your device are unban now, please restart to use.
-Main.userBanned=You had been banned from sahu when %1 with reason: %2. Please contact to facebook m.me/61575698041722 to have more information!
+Main.userBanned=You had been banned from sifu when %1 with reason: %2. Please contact to facebook m.me/100078859776449 to have more information!
 Main.finishCheckListGban=Checked global ban list
 Main.handleListenError=handleListene has occurred some unexpected errorr, error : %1
 Main.warningSourceCode=DETECTED THAT SOURCE CODE'S STRUCTURE HAD BEEN CHANGED , STOP NOW!
@@ -82,13 +82,13 @@ users.needObject=Have to be an Object
 includes/handle/handleCommand.js
 
 handleCommand.userBanned=বক্স এ বেশি আবলামি করার কারণে তুমাকে ব্যান করা হয়েছে!!🚫
-handleCommand.threadBanned=Group Has Been Banned..!⛔️\nPlease Contact Owner SUJON For Unban ⚠️
-handleCommand.commandNotExist=দূঃখিত আপনি ভুল কমান্ড ব্যবহার করছেন%1 ?\n\nঅন্য কমান্ড ব্যবহার করুন  🕊️
+handleCommand.threadBanned=Group Has Been Banned..!⛔️\nPlease Contact Owner Shifat For Unban ⚠️
+handleCommand.commandNotExist=ℂ𝕄𝔻 𝔻𝕆𝔼𝕊 ℕ𝕆𝕋 𝔼𝕏𝕀𝕊𝕋 ! \n 𝕋𝕐ℙ𝔼 ℍ𝔼𝕃ℙ 𝕋𝕆 𝕍𝕀𝔼𝕎 𝕊𝕀𝔽𝕌 𝔸𝕃𝕃 ℂ𝕄𝔻 ! 🕊️
 handleCommand.commandThreadBanned=Your thread is unable to use command "%1"
 handleCommand.commandUserBanned=You are unable to use command "%1"
 handleCommand.threadNotAllowNSFW=This Commnd Only use Andmin
 handleCommand.cantGetInfoThread=Can't get your thread's info, error: %1
-handleCommand.permssionNotEnough="%1 এই কমান্ডটা তোর জন্য না!\n👑 এইটা শুধুমাত্র আমার বস সুজন  ব্যবহার করতে পারবে!\nতুই এডমিন লেভেলে নাই বুঝলি? 😂
+handleCommand.permssionNotEnough="%1 ⎯⎯⎯⎯⎯⎯\n\n✨ 𝕆ℕ𝕃𝕐 𝕊ℍ𝕀𝔽𝔸𝕋 𝕀𝕊 𝔸𝕌𝕋ℍ𝕆ℝ𝕀ℤ𝔼𝔻 𝕋𝕆 𝕌𝕊𝔼 𝕋ℍ𝕀𝕊 ℂ𝕆𝕄𝕄𝔸ℕ𝔻 !‽
 handleCommand.cantSetMessageReaction=Having some unexpected error at setMessageReaction, error: %1
 handleCommand.executeCommand=[ %1 ] Command used: %2 by user: %3 at thread: %4 | Args included: %5 | Processing time: %6ms
 handleCommand.commandError=Having some unexpected error when using command %1, error: %2
@@ -123,7 +123,7 @@ handleSchedule.exectuteError=Having some error when schedule at module %1, error
 
 utils/index.js
 
-utils.throwError=ℹ️ [!] ɪғ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪs ɴᴏᴛ �ᴏʀᴋɪɴɢ, ᴘʟᴇᴀsᴇ ᴜsᴇ ᴀɴᴏᴛʜᴇʀ ᴄᴏᴍᴍᴀɴᴅ ғᴏʀ ᴀɴʏ ᴘʀᴏʙʟᴇᴍ. %1help %2 ᴜsᴇ ғᴏʀ ᴍᴏʀᴇ ᴜsᴀɢᴇ💙🥺
+utils.throwError=[!] ɪғ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪs ɴᴏᴛ �ᴏʀᴋɪɴɢ, ᴘʟᴇᴀsᴇ ᴜsᴇ ᴀɴᴏᴛʜᴇʀ ᴄᴏᴍᴍᴀɴᴅ ғᴏʀ ᴀɴʏ ᴘʀᴏʙʟᴇᴍ. %1help %2 ᴜsᴇ ғᴏʀ ᴍᴏʀᴇ ᴜsᴀɢᴇ💙🥺
 
 updater.js
 
