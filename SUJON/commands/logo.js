@@ -23,7 +23,7 @@ module.exports.run = async ({ api, event, args, Users }) => {
  const outputPath = path.join(__dirname, "cache", `${event.senderID}_logo.png`);
 
  if (!fs.existsSync(fontPath)) {
- return api.sendMessage("❌ ফন্ট ফাইল পাওয়া যায়নি! fonts ফোল্ডারে 'CyberFont.ttf' রাখো।", event.threadID);
+ return api.sendMessage(" ফন্ট ফাইল পাওয়া যায়নি! fonts ফোল্ডারে 'CyberFont.ttf' রাখো।", event.threadID);
  }
 
  registerFont(fontPath, { family: "CyberFont" });
@@ -70,7 +70,7 @@ module.exports.run = async ({ api, event, args, Users }) => {
 
  api.sendMessage(
  {
- body: "✅ আপনার CYBER BOT লোগো তৈরি হয়েছে!",
+ body: "✨ আপনার লোগো তৈরি হয়েছে!",
  attachment: fs.createReadStream(outputPath)
  },
  event.threadID,
@@ -81,6 +81,6 @@ module.exports.run = async ({ api, event, args, Users }) => {
  );
  } catch (err) {
  console.error(err);
- api.sendMessage("❌ লোগো বানাতে সমস্যা হয়েছে!", event.threadID);
+ api.sendMessage("🥺লোগো বানাতে সমস্যা হয়েছে!", event.threadID);
  }
 };
