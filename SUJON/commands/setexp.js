@@ -12,7 +12,7 @@ module.exports.config = {
 			key: 'Tag',
 			prompt: 'Leave blank or tag someone, you can tag more than one person',
 			type: 'Document',
-			example: '@Priyansh'
+			example: '@shifat'
 		}
 	]
 };
@@ -32,12 +32,12 @@ var mention = Object.keys(event.mentions)[0];
 if (args[1] == 'me'){
 			var s = event.senderID;
 			const expme =(await Currencies.getData(event.senderID)).exp;
-			api.sendMessage(`✅Removed all your exp\nThe number of exp to remove is ${expme}.`, event.threadID, async() => {await Currencies.setData(event.senderID, {exp: parseInt(kong)})});
+			api.sendMessage(`🧾Removed all your exp\nThe number of exp to remove is ${expme}.`, event.threadID, async() => {await Currencies.setData(event.senderID, {exp: parseInt(kong)})});
 		}	
 		else if (Object.keys(event.mentions).length == 1) {
 var mention = Object.keys(event.mentions);
 		const expdel = (await Currencies.getData(mention)).exp;
-		api.sendMessage(`✅Removed all exp of ${event.mentions[mention].replace("@", "")}\nThe number of exp to remove is ${expdel}.`, event.threadID, async() => {await Currencies.setData(mention, {exp: parseInt(kong)})});
+		api.sendMessage(`🧾Removed all exp of ${event.mentions[mention].replace("@", "")}\nThe number of exp to remove is ${expdel}.`, event.threadID, async() => {await Currencies.setData(mention, {exp: parseInt(kong)})});
 		}
 		
 		else return	api.sendMessage("wrong syntax", event.threadID, event.messageID);
