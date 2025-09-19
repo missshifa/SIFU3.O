@@ -16,7 +16,7 @@ module.exports.run = async function({ api, event, args, Currencies }) {
 			let money = (await Currencies.getData(event.senderID)).money;
 			var coin = args.join(" ");
 	
-			if (!coin) return api.sendMessage(`You have not entered the bet amount!`, threadID, messageID);
+			if (!coin) return api.sendMessage(`You have not entered the bet amount!!`, threadID, messageID);
 			let win = false;
 			if (isNaN(coin)|| coin.indexOf("-") !== -1) return api.sendMessage(`Your bet amount is not a number, please review usage at ${prefix}help baucuaca`, threadID, messageID);
 			if (!coin) return api.sendMessage("The bet amount has not been entered!", threadID, messageID);
