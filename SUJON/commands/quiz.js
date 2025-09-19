@@ -1,4 +1,5 @@
 const axios = require("axios");
+const Currencies = require("../../includes/database/currencies"); // <-- এইটা যোগ করলাম
 
 async function getBaseApi() {
   try {
@@ -88,14 +89,12 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
   const { rewardCoins, rewardExp } = module.exports.config.envConfig;
 
   if (userAnswer === correctAnswer.toLowerCase()) {
-    // ✅ এখানে কয়েন/EXP বাড়ানোর লজিক বসাও
-    // 👉 তোমার বটে যেভাবে কয়েন/EXP অ্যাড হয় সেই ফাংশন বসাও
-    // উদাহরণ:
-    // await Currencies.increaseMoney(event.senderID, rewardCoins);
-    // await Currencies.increaseExp(event.senderID, rewardExp);
+    // ✅ কয়েন/EXP অ্যাড করা
+    await Currencies.increaseMoney(event.senderID, rewardCoins);
+    await Currencies.increaseExp(event.senderID, rewardExp);
 
     api.sendMessage(
-      `✅ সঠিক উত্তর!\nতুমি পেয়েছো ${rewardCoins} কয়েন এবং ${rewardExp} EXP 🎉\n\n✨`,
+      `✅ সঠিক উত্তর!\nতুমি পেয়েছো ${rewardCoins} কয়েন এবং ${rewardExp} EXP 🎉`,
       event.threadID,
       event.messageID
     );
