@@ -10,7 +10,7 @@ module.exports.config = {
 
   'description': "HOT VEDIO",
 
-  'commandCategory': "Hình ảnh",
+  'commandCategory': "Video",
 
   'usages': "xhan",
 
