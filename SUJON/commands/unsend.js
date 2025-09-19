@@ -1,11 +1,11 @@
 module.exports.config = {
-	name: "unsend",
+	name: "u",
 	version: "1.0.1",
 	hasPermssion: 0,
 	credits: "𝐂𝐘𝐁𝐄𝐑 ☢️_𖣘 -𝐁𝐎𝐓 ⚠️ 𝑻𝑬𝑨𝑴_ ☢️",
 	description: "Gỡ tin nhắn của bot",
 	commandCategory: "system",
-	usages: "unsend",
+	usages: "u",
 	cooldowns: 0
 };
 
@@ -15,8 +15,8 @@ module.exports.languages = {
 		"missingReply": "Hãy reply tin nhắn cần gỡ."
 	},
 	"en": {
-		"returnCant": "আরে বলদ অন্য কারো মেসেজ আমি আনসেন্ড করবো কিভাবে পাগল ছাগল",
-		"missingReply": "আপনি আমার কোন মেসেজটি আনসেন্ড করবেন , তা রিপ্লাই করুন 🌺"
+		"returnCant": " 😑😒Hey, how do I unsend someone else's message? ",
+		"missingReply": "🧾🫡Reply to which of my messages you would unsend. "
 	}
 }
 
