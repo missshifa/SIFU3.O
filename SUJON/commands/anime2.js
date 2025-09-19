@@ -1,11 +1,11 @@
 module.exports.config = {
- name: "anime1",
+ name: "anime2",
  version: "1.0.0",
  hasPermssion: 0,
  credits: "Shaon Ahmed",
  description: "ANIME VIDEO",
- commandCategory: "group",
- usages: "anime video",
+ commandCategory: "Media",
+ usages: "anime video2",
  cooldowns: 5,
  dependencies: {
  'request': '',
