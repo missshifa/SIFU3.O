@@ -93,7 +93,7 @@ module.exports.run = async function ({ event, api }) {
  ];
 
  if (!mention[0]) {
- return api.sendMessage("❌ দয়া করে একজনকে মেনশন করো!", threadID, messageID);
+ return api.sendMessage("একজনকে মেনশন কর বলদ 😒!", threadID, messageID);
  }
 
  const one = senderID;
@@ -107,7 +107,7 @@ module.exports.run = async function ({ event, api }) {
  };
  return api.sendMessage(message, threadID, () => fs.unlinkSync(imagePath), messageID);
  } catch (err) {
- console.error("❌ love2 মডিউলে সমস্যা:", err);
- return api.sendMessage("⚠️ ইমেজ তৈরি করতে সমস্যা হয়েছে, পরে আবার চেষ্টা করো!", threadID, messageID);
+ console.error("🥲love2 মডিউলে সমস্যা:", err);
+ return api.sendMessage(" 🤧ইমেজ তৈরি করতে সমস্যা হয়েছে, পরে আবার চেষ্টা করো!", threadID, messageID);
  }
 };
