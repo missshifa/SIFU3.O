@@ -6,7 +6,7 @@ module.exports.config = {
   name: "tempmail",
   version: "2.0.0",
   hasPermission: 0,
-  credits: "SUJON",
+  credits: "SHIFAT",
   description: "প্রতি ইউজারের জন্য আলাদা temp ইমেইল তৈরি ও ইনবক্স চেক",
   commandCategory: "utility",
   usages: ["tempmail", "tempmail checkmail"],
@@ -24,7 +24,7 @@ module.exports.run = async function ({ api, event, args }) {
   // ========== STEP 1: CHECKMAIL ==========
   if (args[0] === "checkmail") {
     if (!fs.existsSync(userFile)) {
-      return api.sendMessage("❌ আগে একটি temp ইমেইল তৈরি করুন: tempmail", threadID);
+      return api.sendMessage("Create a temp email first.: tempmail", threadID);
     }
 
     try {
@@ -33,7 +33,7 @@ module.exports.run = async function ({ api, event, args }) {
       const messages = res.data.data;
 
       if (messages.length === 0) {
-        return api.sendMessage(`📭 ${email} এ এখনো কোনো মেইল আসেনি। পরে আবার চেষ্টা করুন।`, threadID);
+        return api.sendMessage(`📭 ${email} এ No mail has arrived yet. Please try again later.।`, threadID);
       }
 
       const first = messages[0];
@@ -59,7 +59,7 @@ module.exports.run = async function ({ api, event, args }) {
 
     } catch (err) {
       console.error(err);
-      return api.sendMessage("❌ মেইল চেক করতে সমস্যা হচ্ছে। পরে আবার চেষ্টা করুন।", threadID);
+      return api.sendMessage(" There is a problem checking mail. Please try again later.।", threadID);
     }
 
     return;
@@ -68,7 +68,7 @@ module.exports.run = async function ({ api, event, args }) {
   // ========== STEP 2: CREATE NEW TEMPMAIL ==========
   if (fs.existsSync(userFile)) {
     const { email } = JSON.parse(fs.readFileSync(userFile));
-    return api.sendMessage(`✅ আপনি আগেই একটি temp ইমেইল তৈরি করেছেন:\n📨 ${email}\n\nℹ️ নতুন মেইল পেতে লিখুন: tempmail checkmail`, threadID);
+    return api.sendMessage(` You have already created a temp email:\n📨 ${email}\n\n Sign up to receive new emails: tempmail checkmail`, threadID);
   }
 
   try {
@@ -80,11 +80,11 @@ module.exports.run = async function ({ api, event, args }) {
 
     fs.writeFileSync(userFile, JSON.stringify({ email, id }));
 
-    api.sendMessage(`✅ আপনার নতুন temp ইমেইল তৈরি করা হয়েছে:\n📨 ${email}\n🆔 Mail ID: ${id}\n\nℹ️ এখন যেকোনো সাইটে এই ইমেইল বসান এবং পরে লিখুন:\n👉 tempmail checkmail`, threadID);
+    api.sendMessage(`🧾 Your new temp email has been created.:\n📨 ${email}\n🆔 Mail ID: ${id}\n\nℹ️ Now put this email on any site and write it later.:\n👉 tempmail checkmail`, threadID);
 
   } catch (err) {
     console.error(err);
-    return api.sendMessage("❌ ইমেইল তৈরি করতে ব্যর্থ। একটু পরে আবার চেষ্টা করুন।", threadID);
+    return api.sendMessage("❌ Failed to create email. Please try again later.", threadID);
   }
 };
 
