@@ -41,8 +41,8 @@ module.exports.run = async function({ api, event }) {
  let shaon2 = res.data.shaon;
  let callback = function () {
  api.sendMessage({
- body: `𝐒𝐏𝐀𝐘𝐒𝐇𝐄𝐀𝐋 𝗩𝗶𝗱𝗲𝗼 𝐌𝐈𝐗 
-${shaon2} 𝚃𝙾𝚃𝙰𝙻 𝚅𝙸𝙳𝙴𝙾:${count}...🎬\n\n｢𝐔𝐋𝐋𝐀𝐒𝐇｣`,
+ body: `✨ 𝐇 𝐈 𝐍 𝐀 𝐓 𝐀 ✨\n 𝗩𝗶𝗱𝗲𝗼 𝐌𝐈𝐗 
+${shaon2} 𝚃𝙾𝚃𝙰𝙻 𝚅𝙸𝙳𝙴𝙾:${count}...🎬\n\n｢—͟͟͞͞sʜɪғꫝ֟፝ؖ۬ᴛ ✿｣`,
  attachment: fs.createReadStream(__dirname + `/cache/Shaoon.mp4`)
  }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/Shaoon.mp4`), event.messageID);
  };
