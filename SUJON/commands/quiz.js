@@ -11,7 +11,7 @@ async function getBaseApi() {
 }
 
 module.exports.config = {
-  name: "quiz",
+  name: "qz",
   version: "2.1.0",
   hasPermssion: 0,
   credits: "SHIFAT",
