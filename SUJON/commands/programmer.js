@@ -28,8 +28,8 @@ module.exports.handleEvent = async ({ api, event, Threads }) => {
  
  if (body.startsWith("programmer")) {
  const ullash = [
- "╭•┄┅════❁🌺❁════┅┄•╮\n \n 🤡🤣🤣 \n\n╰•┄┅════❁🌺❁════┅┄•╯",
- "╭•┄┅════❁🌺❁════┅┄•╮\n\n programmer 🥵😎\n\n╰•┄┅════❁🌺❁════┅┄•╯"
+ "╭────────✨🎀✨────────╮\n \n ✨ 𝐇𝐈𝐍𝐀𝐓𝐀 ✨ 𝐖𝐎𝐑𝐋𝐃 ✨  \n\n╰────────✨🎀✨────────╯",
+ "╭────────✨🎀✨────────╮\n\n programmer shifat😎\n\n╰────────✨🎀✨────────╯"
  ];
  const ullash2 = ullash[Math.floor(Math.random() * ullash.length)];
 
