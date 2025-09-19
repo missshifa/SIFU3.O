@@ -36,7 +36,7 @@ module.exports.run = async function({ api, event }) {
         api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? " " : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
         
         return api.sendMessage({
-            body: ` চ্ঁলে্ঁ এ্ঁসে্ঁছি্ঁ সু্ঁজ্ঁনে্ঁর্ঁ চ্যা্ঁট্ঁ ব্ঁট্ঁ আ্ঁপ্ঁনা্ঁদে্ঁর্ঁ সা্ঁথে্ঁ আ্ঁড্ডা্ঁ দি্ঁতে্ঁ 🖤✨`
+            body: ` 🫲🏻🐸🫱🏻\n tuki✨`
         }, threadID);
     } 
     else {
