@@ -77,7 +77,7 @@
         "delayUnsend": 55
     },
     "rankup": {
-        "autoUnsend": true,
+        "autoUnsend": false,
         "unsendMessageAfter": 10
     },
     "rname": {
@@ -112,7 +112,7 @@
     },
     "help": {
         "autoUnsend": true,
-        "delayUnsend": 120
+        "delayUnsend": 80
     },
     "pokemon": {
         "APIKEY": ""
