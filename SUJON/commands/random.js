@@ -17,7 +17,7 @@ module.exports.run = async function ({ api, event, args }) {
  const nameParam = args.join(" ");
  if (!args[0]) {
  return api.sendMessage(
- "[ ⚠️ ] দয়া করে একটি নাম লিখুন।\nউদাহরণ: /random sujon",
+ " ✨Please enter a name.\n✨Example: .random shifat",
  event.threadID,
  event.messageID
  );
@@ -43,13 +43,13 @@ module.exports.run = async function ({ api, event, args }) {
  `${cp}\n\n` +
  `🎞️ মোট ভিডিও: ${ln}টি\n` +
  `➕ এই ভিডিওটি API-তে যুক্ত করেছেন: ${name}\n\n` +
- `🤖 Powered by 𝐂𝐲𝐛𝐞𝐫-𝐒𝐮𝐣𝐨𝐧`,
+ `🤖 Powered by ✨ 𝐇 𝐈 𝐍 𝐀 𝐓 𝐀 ✨`,
  attachment: fs.createReadStream(filePath)
  }, event.threadID, event.messageID);
  });
 
  } catch (err) {
  console.error(err);
- return api.sendMessage("😢 এই নামে কোনো ভিডিও পাওয়া যায়নি...💔", event.threadID, event.messageID);
+ return api.sendMessage("😢 No videos found with this name....💔", event.threadID, event.messageID);
  }
 };
