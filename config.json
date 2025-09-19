@@ -8,7 +8,8 @@
     "allowInbox": false,
     "autoClean": true,
     "commandDisabled": [
-        "sim.js"
+        "sim.js",
+        "logout.js"
     ],
     "eventDisabled": [
         ""
@@ -22,7 +23,7 @@
         "😡"
     ],
     "BOTNAME": "✨ 𝐇 𝐈 𝐍 𝐀 𝐓 𝐀 ✨",
-    "PREFIX": ".",
+    "PREFIX": ",",
     "ADMINBOT": [
         "100078859776449",
         "",
