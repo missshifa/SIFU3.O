@@ -1,5 +1,6 @@
 const axios = require("axios");
-const Currencies = require("../../includes/database/currencies"); // <-- এইটা যোগ করলাম
+// <<< পরিবর্তন ১: এখানে আমরা শুধুমাত্র ফাংশনটি লোড করছি
+const currenciesData = require("../../includes/database/currencies");
 
 async function getBaseApi() {
   try {
@@ -15,7 +16,7 @@ module.exports.config = {
   name: "qz",
   version: "2.1.0",
   hasPermssion: 0,
-  credits: "SHIFAT",
+  credits: "SHIFAT (Fixed by Gemini)",
   description: "Random quiz খেলো",
   commandCategory: "game",
   usages: "[en/bn]",
@@ -39,7 +40,7 @@ module.exports.run = async function ({ api, event, args }) {
     const res = await axios.get(`${baseApi}/api/quiz?category=${category}`);
     const quiz = res.data;
 
-    if (!quiz) {
+    if (!quiz || !quiz.question) {
       return api.sendMessage("❌ এই ক্যাটাগরির জন্য কোনো Quiz পাওয়া যায়নি।", event.threadID, event.messageID);
     }
 
@@ -66,7 +67,12 @@ module.exports.run = async function ({ api, event, args }) {
       });
 
       setTimeout(() => {
-        api.unsendMessage(info.messageID);
+        // একটি try-catch ব্লক যোগ করা হলো কারণ মেসেজটি এর আগেই ডিলিট হয়ে যেতে পারে
+        try {
+            api.unsendMessage(info.messageID);
+        } catch (e) {
+            console.log("Quiz message might have been unsent already.");
+        }
       }, 40000);
     }, event.messageID);
 
@@ -83,21 +89,34 @@ module.exports.handleReply = async function ({ api, event, handleReply }) {
     return api.sendMessage("❌ এই কুইজ তোমার জন্য নয়।", event.threadID, event.messageID);
   }
 
-  await api.unsendMessage(handleReply.messageID);
-  const userAnswer = event.body.trim().toLowerCase();
+  // <<< পরিবর্তন ২: এখানে আমরা currencies মডিউলটিকে ইনিশিয়ালাইজ করছি
+  // এটি এখন usable (ব্যবহারযোগ্য)
+  if (!global.models) {
+      return api.sendMessage("❌ ডাটাবেস মডেল লোড হয়নি।", event.threadID, event.messageID);
+  }
+  const Currencies = currenciesData({ models: global.models });
 
-  const { rewardCoins, rewardExp } = module.exports.config.envConfig;
+
+  await api.unsendMessage(handleReply.messageID).catch(e => console.log("Reply message might have been unsent already."));
+  
+  const userAnswer = event.body.trim().toLowerCase();
+  const { rewardCoins, rewardExp } = this.config.envConfig;
 
   if (userAnswer === correctAnswer.toLowerCase()) {
-    // ✅ কয়েন/EXP অ্যাড করা
-    await Currencies.increaseMoney(event.senderID, rewardCoins);
-    await Currencies.increaseExp(event.senderID, rewardExp);
+    try {
+      // ✅ কয়েন/EXP অ্যাড করা
+      await Currencies.increaseMoney(event.senderID, rewardCoins);
+      await Currencies.increaseExp(event.senderID, rewardExp);
 
-    api.sendMessage(
-      `✅ সঠিক উত্তর!\nতুমি পেয়েছো ${rewardCoins} কয়েন এবং ${rewardExp} EXP 🎉`,
-      event.threadID,
-      event.messageID
-    );
+      api.sendMessage(
+        `✅ সঠিক উত্তর!\nতুমি পেয়েছো ${rewardCoins} কয়েন এবং ${rewardExp} EXP 🎉`,
+        event.threadID,
+        event.messageID
+      );
+    } catch (dbError) {
+        console.error("ডাটাবেসে পুরস্কার যোগ করতে সমস্যা:", dbError);
+        api.sendMessage("✅ সঠিক উত্তর! কিন্তু পুরস্কার যোগ করতে সমস্যা হয়েছে।", event.threadID, event.messageID);
+    }
   } else {
     api.sendMessage(
       `❌ ভুল উত্তর!\nসঠিক উত্তর ছিল: ${correctAnswer}`,
