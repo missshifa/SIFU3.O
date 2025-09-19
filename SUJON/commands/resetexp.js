@@ -11,7 +11,7 @@ module.exports.config = {
 
 module.exports.run = async ({ api, event, Currencies }) => {
     const data = await api.getThreadInfo(event.threadID);
-    let msg = "📛 𝗘𝗫𝗣 𝗥𝗘𝗦𝗘𝗧 𝗟𝗜𝗦𝗧 📛\n\n";
+    let msg = "✨ 𝗘𝗫𝗣 𝗥𝗘𝗦𝗘𝗧 𝗟𝗜𝗦𝗧 ✨\n\n";
     let count = 0;
 
     for (const user of data.userInfo) {
@@ -19,7 +19,7 @@ module.exports.run = async ({ api, event, Currencies }) => {
             let currenciesData = await Currencies.getData(user.id);
             if (currenciesData !== false && typeof currenciesData.exp !== "undefined") {
                 await Currencies.setData(user.id, { exp: 0 });
-                msg += `✅ ${user.name} ➝ 0 exp\n`;
+                msg += `🥳 ${user.name} ➝ 0 exp\n`;
                 count++;
             }
         } catch (e) {
