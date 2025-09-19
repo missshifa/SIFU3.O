@@ -43,7 +43,7 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.imgur.com/q9TICm1.jpeg",
 "https://i.imgur.com/IlYTb8a.jpeg",
         ];
-     var callback = () => api.sendMessage({body:`╭•┄┅════❁🌺❁════┅┄•╮\n    ওয়ালাইকুম আসসালাম-!!🖤💫\n╰•┄┅════❁🌺❁════┅┄•╯\n\n✿🦋༎প্রি্ঁয়্ঁ গ্রুপ্ঁ মে্ঁম্বা্ঁর্ঁ ${name}༎✨🧡\n⋆✦⋆⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⋆✦⋆`,attachment: fs.createReadStream(__dirname + "/cache/emon.jpeg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/emon.jpeg"), event.messageID);
+     var callback = () => api.sendMessage({body:`╭───────✨🎀✨───────╮\n    ওয়ালাইকুম আসসালাম-!!🖤💫\n╰───────✨🎀✨───────╯\n\n✿🦋༎প্রি্ঁয়্ঁ গ্রুপ্ঁ মে্ঁম্বা্ঁর্ঁ ${name}༎✨🧡\n⋆✦⋆⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⋆✦⋆`,attachment: fs.createReadStream(__dirname + "/cache/emon.jpeg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/emon.jpeg"), event.messageID);
   const timeStart = Date.now();
   const dcm = process.uptime(); 
  var anh = Math.floor(dcm / (60 * 60));
