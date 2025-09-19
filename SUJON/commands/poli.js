@@ -10,7 +10,7 @@ credits: "𝐈𝐬𝐥𝐚𝐦𝐢𝐜𝐤 𝐂𝐲𝐛𝐞𝐫",
 
 description: "generate image from pollination",
 
-commandCategory: "user",
+commandCategory: "image",
 
 usages: "poli text",
 
@@ -42,7 +42,7 @@ fs.writeFileSync(path, Buffer.from(poli, "utf-8"));
 
 api.sendMessage({
 
-body: "Here's your image✨🌺",
+body: "✨Here's your image✨",
 
 attachment: fs.createReadStream(path)
 
