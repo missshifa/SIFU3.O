@@ -15,7 +15,7 @@ module.exports.config = {
 
 module.exports.run = async function ({ api, event, args }) {
  const mention = Object.keys(event.mentions)[0];
- if (!mention) return api.sendMessage("⚠️ দয়া করে কাউকে tag করো!", event.threadID, event.messageID);
+ if (!mention) return api.sendMessage("✨ Please tag someone.!", event.threadID, event.messageID);
 
  const tag = event.mentions[mention].replace("@", "");
 
@@ -28,7 +28,7 @@ module.exports.run = async function ({ api, event, args }) {
  const response = await axios.get(imageUrl, { responseType: "arraybuffer" });
  fs.writeFileSync(filePath, Buffer.from(response.data, "utf-8"));
 
- api.setMessageReaction("✅", event.messageID, () => {}, true);
+ api.setMessageReaction("🥳", event.messageID, () => {}, true);
 
  api.sendMessage({
  body: `🤗 Pats, ${tag}!`,
@@ -41,6 +41,6 @@ module.exports.run = async function ({ api, event, args }) {
 
  } catch (err) {
  console.error(err);
- api.sendMessage("❌ GIF আনতে সমস্যা হয়েছে। আবার চেষ্টা করো!", event.threadID, event.messageID);
+ api.sendMessage("🥺 There was a problem loading the GIF. Try again!", event.threadID, event.messageID);
  }
 };
